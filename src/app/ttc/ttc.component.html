@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-12">
+    <label for="prix">Prix :</label>
+    <input type="number" [(ngModel)]="prix" class="form-control" placeholder="prix" />
+  </div>
+  <div class="col-md-12">
+    <label for="quantity">Quantité :</label>
+    <input type="number" [(ngModel)]="quantity" class="form-control" placeholder="quantité" />
+  </div>
+  <div class="col-md-12">
+    <label for="tva">TVA :</label>
+    <input type="number" [(ngModel)]="tva" class="form-control" placeholder="tva" />
+  </div>
+  <div class="col-md-12">
+    <p><strong>PRIX TTC </strong> {{ prixTTC() }}</p>
+  </div>
+</div>
