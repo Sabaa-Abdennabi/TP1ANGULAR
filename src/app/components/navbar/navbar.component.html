@@ -35,14 +35,16 @@
           routerLinkActive="active text-primary"
           >Cv</a
         >
-        @if (authService.isAuthenticated()) {
+        @if (authService.isAuthenticated() ) {
         <a
           class="nav-link"
           [routerLink]="['cv/add']"
           routerLinkActive="active text-primary"
           >Add Cv</a
         >
+
         }
+
         <a
           class="nav-link"
           [routerLink]="['todo']"
@@ -88,6 +90,9 @@
         >
         } @if (authService.isAuthenticated()) {
         <a class="nav-link" (click)="logout()">Logout</a>
+        <span class="'navbar-text" >
+          Welcome ,{{ (user$ | async)?.email }}
+        </span>
         }
       </div>
     </div>
