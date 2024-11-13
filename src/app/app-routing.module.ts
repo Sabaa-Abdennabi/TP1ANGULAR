@@ -13,6 +13,7 @@ import { CvComponent } from './cv/cv/cv.component';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { TTCComponent } from './ttc/ttc.component';
+import { Todo2Component } from './todo2/todo2.component';
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +22,10 @@ const routes: Route[] = [
   {
     path: 'cv',
     component: CvComponent,
+  },
+  {
+    path: 'todo2',
+    component: Todo2Component,
   },
   { path: 'cv/add', component: AddCvComponent, canActivate: [AuthGuard] },
   { path: 'cv/:id', component: DetailsCvComponent },
