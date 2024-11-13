@@ -13,7 +13,7 @@ export class EmbaucheService {
    *
    * Retourne la liste des embauchees
    *
-   * @returns CV[]
+   * @returns Signal<Cv[]>
    *
    */
   getEmbauchees():Signal<Cv[]> {

@@ -13,7 +13,6 @@ import { DefaultImagePipe } from '../pipes/default-image.pipe';
     templateUrl: './details-cv.component.html',
     styleUrls: ['./details-cv.component.css'],
     standalone: true,
-    imports: [DefaultImagePipe],
 })
 export class DetailsCvComponent implements OnInit {
   private cvService = inject(CvService);

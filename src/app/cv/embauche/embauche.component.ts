@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { EmbaucheService } from '../services/embauche.service';
 import { Cv } from '../model/cv';
 
@@ -16,11 +16,8 @@ import { ItemComponent } from '../item/item.component';
 export class EmbaucheComponent {
   private embaucheService = inject(EmbaucheService);
 
-  public embauchees: Cv[] = [];
-
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
+  public embauchees: WritableSignal<Cv[]> = signal([]);
   constructor() {
-    this.embauchees = this.embaucheService.getEmbauchees();
+    this.embauchees.set(this.embaucheService.getEmbauchees()());
   }
 }
