@@ -29,4 +29,18 @@ export class TTCComponent {
     total += total * (this.tva() / 100);
     return total;
   });
+  prixUnitaire : Signal<number> = computed (()=>{
+    return (this.prix() * (1+this.tva()/100))
+  })
+  Discount : Signal<number>=computed (()=>{
+    if (this.quantity()>=10 && this.quantity()<=15){
+      return 20 ;
+    }
+    else if (this.quantity()>15){
+      return 30 ;
+    }
+    else {
+      return 0;
+    }
+  })
 }

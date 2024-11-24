@@ -15,10 +15,6 @@ export class ColorComponent implements OnInit {
 
   @Input() defaultColor = "red";
 
-  /**
-   *
-   * The color representing the Div
-   */
   divColor = "";
 
   /** Inserted by Angular inject() migration for backwards compatibility */
