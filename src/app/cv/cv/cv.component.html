@@ -3,7 +3,25 @@
     <div class="alert alert-warning">
       {{ date | date : "full" | uppercase }}
     </div>
-    <app-list [cvs]="cvs | async"></app-list>
+
+    <div class="tab-container">
+      <div class="tab">
+        <button class="tablinks" (click)="openTab($event, 'Junior')">
+          Junior
+        </button>
+        <button class="tablinks" (click)="openTab($event, 'Senior')">
+          Senior
+        </button>
+      </div>
+
+      <div id="Junior" class="tabcontent">
+        <app-list [cvs]="cvsJunior | async"></app-list>
+      </div>
+
+      <div id="Senior" class="tabcontent">
+        <app-list [cvs]="cvsSenior | async"></app-list>
+      </div>
+    </div>
   </div>
   <div class="col">
     <app-cv-card [cv]="selectedCv | async"></app-cv-card>
