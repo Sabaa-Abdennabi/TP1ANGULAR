@@ -34,6 +34,17 @@ export class CvService {
   getFakeCvs(): Cv[] {
     return this.cvs;
   }
+  searchCvs(search: string): Observable<Cv[]> {
+    const searchObject = {
+      where: {
+        name: {
+          like: `%${search}%`,
+        },
+      },
+    };
+    const params = new HttpParams().set("filter", JSON.stringify(searchObject));
+    return this.http.get<Cv[]>(API.cv, { params });
+  }
 
   /**
    *
