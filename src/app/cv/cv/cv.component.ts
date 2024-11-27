@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Cv } from '../model/cv';
 import { LoggerService } from '../../services/logger.service';
 import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, share, shareReplay } from 'rxjs';
 @Component({
   selector: 'app-cv',
   templateUrl: './cv.component.html',
@@ -13,21 +13,20 @@ export class CvComponent {
   cvsJunior: Observable<Cv[]>;
   cvsSenior: Observable<Cv[]>;
   selectedCv: Observable<Cv | null>;
+  logger = inject(LoggerService);
+  toastr = inject(ToastrService);
+  cvService = inject(CvService);
   /*   selectedCv: Cv | null = null; */
   date = new Date();
 
-  constructor(
-    private logger: LoggerService,
-    private toastr: ToastrService,
-    private cvService: CvService
-  ) {
+  constructor() {
     const cvs = this.cvService.getCvs().pipe(
       catchError((error) => {
         this.toastr.error(`Problème d'accès aux données`);
         return of([]);
-      })
+      }),
+      shareReplay(1)
     );
-
     this.cvsJunior = cvs.pipe(map((cvs) => cvs.filter((cv) => cv.age < 40)));
     this.cvsSenior = cvs.pipe(map((cvs) => cvs.filter((cv) => cv.age >= 40)));
     this.logger.logger('je suis le cvComponent');

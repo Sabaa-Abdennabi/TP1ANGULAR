@@ -36,7 +36,7 @@ export class ProductsComponent {
       concatMap(({ limit, skip }) =>
         this.productService.getProducts({ limit, skip }).pipe(
           tap((response) => {
-            if (response.products.length < limit) {
+            if (response.products.length==0) {
               this.allloaded = true;
             }
           })
