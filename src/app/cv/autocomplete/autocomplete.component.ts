@@ -20,7 +20,7 @@ export class AutocompleteComponent {
     return this.form.get('search')!;
   }
   form = this.formBuilder.group({ search: [''] });
-  constructor() {
+  ngOnInit() {
     this.searchReasults$ = this.search.valueChanges.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -28,4 +28,5 @@ export class AutocompleteComponent {
       switchMap((search) => this.cvService.searchCvs(search))
     );
   }
+
 }

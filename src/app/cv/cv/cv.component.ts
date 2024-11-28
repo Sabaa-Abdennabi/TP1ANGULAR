@@ -4,6 +4,7 @@ import { LoggerService } from '../../services/logger.service';
 import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
 import { catchError, map, Observable, of, share, shareReplay } from 'rxjs';
+
 @Component({
   selector: 'app-cv',
   templateUrl: './cv.component.html',

@@ -42,7 +42,6 @@ import { TestHttpComponent } from "./components/test-http/test-http.component";
 import { AuthInterceptorProvider } from "./auth/interceptors/auth.interceptor";
 import { ListComponent } from "./cv/list/list.component";
 import { ItemComponent } from "./cv/item/item.component";
-import { DefaultImagePipe } from "./cv/pipes/default-image.pipe";
 import { EmbaucheComponent } from "./cv/embauche/embauche.component";
 import { CvCardComponent } from "./cv/cv-card/cv-card.component";
 import { RhComponent } from "./optimizationPattern/rh/rh.component";
@@ -52,10 +51,10 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { AutocompleteComponent } from "./cv/autocomplete/autocomplete.component";
 import { SliderComponent } from "./rxjs/slider/slider.component";
 import { MasterDetailsCvComponent } from "./cv/master-details-cv/master-details-cv.component";
+import { CvModule } from "./cv/cv.module";
 
 @NgModule({
   declarations: [
-    MasterDetailsCvComponent,
     AppComponent,
     FirstComponent,
     SecondComponent,
@@ -64,16 +63,6 @@ import { MasterDetailsCvComponent } from "./cv/master-details-cv/master-details-
     CardProfilComponent,
     PereComponent,
     FilsComponent,
-    AddCvComponent,
-    CvComponent,
-    ItemComponent,
-    ListComponent,
-    DetailsCvComponent,
-    CvCardComponent,
-    CardProfilComponent,
-    EmbaucheComponent,
-    DefaultImagePipe,
-    AutocompleteComponent,
     NgstyleComponent,
     MiniWordComponent,
     NgclassComponent,
@@ -95,6 +84,7 @@ import { MasterDetailsCvComponent } from "./cv/master-details-cv/master-details-
   ],
   bootstrap: [AppComponent],
   imports: [
+    CvModule,
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule, // required animations module
@@ -112,5 +102,6 @@ import { MasterDetailsCvComponent } from "./cv/master-details-cv/master-details-
     AuthInterceptorProvider,
     provideHttpClient(withInterceptorsFromDi()),
   ],
+
 })
 export class AppModule {}

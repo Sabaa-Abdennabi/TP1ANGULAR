@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <input type="text" class="form-control" formControlName="search" />
   <ul *ngIf="(searchReasults$ | async)?.length">
-    <app-list [cvs]="searchReasults$ | async" />
+    <app-list [cvs]="searchReasults$ | async" ></app-list>
   </ul>
 </form>
