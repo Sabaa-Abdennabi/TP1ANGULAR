@@ -12,6 +12,7 @@ import { Cv } from '../model/cv';
   styleUrls: ['./add-cv.component.css'],
 })
 export class AddCvComponent {
+  private readonly cvkey: string = 'CvKey';
   constructor(
     private cvService: CvService,
     private router: Router,
@@ -32,6 +33,23 @@ export class AddCvComponent {
         );
       },
     });
+
+    this.form.valueChanges.subscribe({
+      next: (value) => {
+        if (this.form.valid) {
+          localStorage.setItem(this.cvkey, JSON.stringify(value));
+        }
+      },
+      error: (err) => {
+        this.toastr.error(
+          `Une erreur s'est produite, Veuillez contacter l'admin`
+        );
+      },
+    });
+  }
+  ngOnInit(): void {
+    const cv = JSON.parse(localStorage.getItem(this.cvkey) || '{}');
+    this.form.patchValue(cv);
   }
 
   form = this.formBuilder.group({
